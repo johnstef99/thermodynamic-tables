@@ -1,6 +1,6 @@
 # thermodynamic_local
 
-A new Flutter application.
+It's an app that has the tables we need at thermodynamic!
 
 ## Getting Started
 
