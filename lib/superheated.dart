@@ -45,7 +45,7 @@ class SuperheatedFinal extends StatelessWidget{
 
 
     return new Scaffold(
-        appBar: new AppBar(title: new Text('Pressure: ' + pressure + 'MPa at '+ Superheated.superheatedContext[index_in]["t"].toString()+'°C')),
+        appBar: new AppBar(title: new Text('P:' + pressure + 'MPa T:'+ Superheated.superheatedContext[index_in]["t"].toString()+'°C')),
         body: new Column(
           children: <Widget>[
             superheated("V", V, "v"),
@@ -163,6 +163,18 @@ class Superheated extends StatelessWidget {
             pressureItem("0.2"),
             pressureItem("0.3"),
             pressureItem("0.4"),
+            pressureItem("0.5"),
+            pressureItem("0.6"),
+            pressureItem("0.8"),
+            pressureItem("1"),
+            pressureItem("1.2"),
+            pressureItem("1.4"),
+            pressureItem("1.6"),
+            pressureItem("1.8"),
+            pressureItem("2"),
+            pressureItem("2.5"),
+            pressureItem("3"),
+            pressureItem("3.5"),
           ],
         )
         );
