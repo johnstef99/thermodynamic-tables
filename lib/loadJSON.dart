@@ -3,6 +3,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future;
 import 'package:thermodynamic_local/temperature.dart';
 import 'package:thermodynamic_local/pressure.dart';
+import 'package:thermodynamic_local/superheated.dart';
 
 List decoded;
 Future<String> _loadCrosswordAsset(String filePath) async {
@@ -13,4 +14,6 @@ Future loadJSON() async {
   Temperature.tempContext = JSON.decode(temp);
   String pres = await _loadCrosswordAsset('files/pressure.json');
   Pressure.presContext = JSON.decode(pres);
+  String superheated = await _loadCrosswordAsset('files/superheated.json');
+  Superheated.superheatedContext = JSON.decode(superheated);
 }

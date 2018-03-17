@@ -3,6 +3,7 @@ import 'package:thermodynamic_local/temperature.dart';
 import 'package:thermodynamic_local/pressure.dart';
 import 'package:thermodynamic_local/loadJSON.dart';
 import 'package:share/share.dart';
+import 'package:thermodynamic_local/superheated.dart';
 
 void main(){
   loadJSON();
@@ -24,7 +25,10 @@ class MyApp extends StatelessWidget {
         "SelectedTemp": (BuildContext context) => new SelectedTemp(tempContext: Temperature.tempContext, index: Temperature.index),
         "Temperature": (BuildContext context) => new Temperature(),
         "Pressure" : (BuildContext context) => new Pressure(),
-        "SelectedPres" : (BuildContext context) => new SelectedPres(presContext: Pressure.presContext, index: Pressure.index,)
+        "SelectedPres" : (BuildContext context) => new SelectedPres(presContext: Pressure.presContext, index: Pressure.index),
+        "SuperheatedPressure" : (BuildContext context) => new Superheated(),
+        "SuperheatedTemperature" : (BuildContext context) => new SuperheatedTemp(),
+        "SuperheatedFinal" : (BuildContext context) => new SuperheatedFinal()
 
       },
     );
@@ -42,7 +46,6 @@ class _MyHomePageState extends State<MyHomePage> {
       new Card(
         child: new FlatButton(
             onPressed: () {
-              print(Temperature.tempContext.length);
               Navigator.of(context).pushNamed(whereTo);
             },
             child: new Center(
@@ -68,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             menuItems("Temperature", "Temperature"),
             menuItems("Pressure", "Pressure"),
-            //menuItems("Superheated", "Superheated"),
+            menuItems("SuperheatedPressure", "Superheated"),
 
           ],
         ),
