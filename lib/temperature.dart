@@ -1,7 +1,4 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:isolate/load_balancer.dart';
-
 
 
 Flexible temp(String label,String monadaMetrisis, String key, int index, List tempContext) =>
@@ -72,29 +69,9 @@ class Temperature extends StatelessWidget {
 
   //JSON
   //jSon
-  static File tempJson;
-  static Directory dir;
-  static String tempFileName = 'temperature.json';
+ 
   static List tempContext;
   static int index;
-
-
-  @override
-  void initState() {
-  }
-
-  static void getData() async {
-    /*getApplicationDocumentsDirectory().then((Directory directory) {
-      dir = directory;
-      print(dir.path);
-      tempJson = new File(dir.path + "/flutter_assets/files/" + tempFileName);
-      tempContext = JSON.decode(tempJson.readAsStringSync());
-
-
-    });*/
-    //tempContext = loadAsset();
-  }
-
 
 
   @override

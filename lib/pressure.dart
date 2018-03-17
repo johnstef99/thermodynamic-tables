@@ -1,8 +1,4 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 
 Flexible pres(String label,String monadaMetrisis, String key, int index, List presContext) =>
     new Flexible(
@@ -72,29 +68,12 @@ class SelectedPres extends StatelessWidget {
 class Pressure extends StatelessWidget {
 
 
-  //JSON
-  //jSon
-  static File presJson;
-  static Directory dir;
-  static String tempFileName = 'pressure.json';
+ 
   static List presContext;
   static int index;
 
 
-  @override
-  void initState() {
-    Pressure.getData();
-  }
 
-  static void getData() async {
-    getApplicationDocumentsDirectory().then((Directory directory) {
-      dir = directory;
-      presJson = new File(dir.path + "/flutter_assets/files/" + tempFileName);
-      presContext = JSON.decode(presJson.readAsStringSync());
-
-      print(presContext[0]["p"]);
-    });
-  }
 
 
   @override
