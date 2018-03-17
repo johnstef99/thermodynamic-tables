@@ -6,8 +6,6 @@ import 'package:share/share.dart';
 
 void main(){
   loadJSON();
-  //Temperature.getData();
-  //Pressure.getData();
   runApp(new MyApp());
 }
 
