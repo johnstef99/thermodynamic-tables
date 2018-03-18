@@ -15,25 +15,32 @@ class SuperheatedFinal extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    Flexible superheated(String label,String monadaMetrisis, String key) =>
+   Flexible superheated(String label,String monadaMetrisis, String key) =>
     new Flexible(
       child: new Card(
           child: new Center(
             child: new Container(
               padding: new EdgeInsets.all(10.0),
-              child: new Row(
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  new Text(label + ': ',
-                      style: new TextStyle(color: Colors.blue)
+                  new Flexible(
+                                      child: new Text(label,
+                          style: new TextStyle(color: Colors.blue, fontSize: 30.0)
+                      ),
                   ),
                   new Flexible(
-                    fit: FlexFit.tight,
-                    child: new Text(
-                        Superheated.superheatedContext[index_in][key].toString(), style: new TextStyle(
-                        color: Colors.orange)
-                        ),
-                  ),
-                  new Text(monadaMetrisis, style: new TextStyle(color: Colors.red),)
+                                      child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new Text(
+                              Superheated.superheatedContext[index_in][key].toString(), style: new TextStyle(
+                              color: Colors.orange, fontSize: 25.0)
+                              ),
+                      new Text(monadaMetrisis,overflow: TextOverflow.ellipsis, style: new TextStyle(color: Colors.red,fontFamily: 'Roboto',),)
+                      ],
+                    ),
+                  )
                 ],
               ),
 
@@ -46,13 +53,16 @@ class SuperheatedFinal extends StatelessWidget{
 
     return new Scaffold(
         appBar: new AppBar(title: new Text('P:' + pressure + 'MPa T:'+ Superheated.superheatedContext[index_in]["t"].toString()+'°C')),
-        body: new Column(
-          children: <Widget>[
-            superheated("V", V, "v"),
-            superheated("U", energy, 'u'),
-            superheated("H", energy, 'h'),
-            superheated("S", entropy, 's')
-          ],
+        body: new Container(
+          padding: new EdgeInsets.all(10.0),
+          child: new Column(
+            children: <Widget>[
+              superheated("V", V, "v"),
+              superheated("U", energy, 'u'),
+              superheated("H", energy, 'h'),
+              superheated("S", entropy, 's')
+            ],
+          ),
         ),
     );
   }

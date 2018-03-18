@@ -5,23 +5,36 @@ Flexible temp(String label,String monadaMetrisis, String key, int index, List te
     new Flexible(
       child: new Card(
           child: new Center(
-            child: new Container(
-              padding: new EdgeInsets.all(10.0),
-              child: new Row(
-                children: <Widget>[
-                  new Text(label + ': ',
-                      style: new TextStyle(color: Colors.blue)
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                new Flexible(
+                  child: new Text(label,
+                  style: new TextStyle(color: Colors.blue,fontSize: 30.0,)
                   ),
-                  new Flexible(
-                    fit: FlexFit.tight,
-                    child: new Text(
+                ),
+                new Flexible(
+                    child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new Text(
                         tempContext[index][key].toString(), style: new TextStyle(
                         color: Colors.orange)),
-                  ),
-                  new Text(monadaMetrisis, style: new TextStyle(color: Colors.red),)
-                ],
-              ),
-
+                      new Flexible(
+                        child: new Text(
+                          monadaMetrisis,overflow: TextOverflow.ellipsis, 
+                          style: new TextStyle(
+                            color: Colors.red,
+                            fontSize: 10.0,
+                            fontFamily: 'Roboto',
+                          ),
+                        )
+                      )
+                      ],
+                    ),
+                )
+                
+              ],
             ),
           )
       ),
@@ -43,21 +56,48 @@ class SelectedTemp extends StatelessWidget {
         appBar: new AppBar(title: new Text(
             'Temperature: ' +
                 tempContext[index]["t"].toString() + ' °C')),
-        body: new Column(
-          children: <Widget>[
-            temp("Psat", pressure, "p", index, tempContext),
-            temp("Vf", V, "vf", index, tempContext),
-            temp("Vg",V, "vg", index, tempContext),
-            temp("Uf",energy, "uf", index, tempContext),
-            temp("Ufg",energy, "ufg", index, tempContext),
-            temp("Ug",energy, "ug", index, tempContext),
-            temp("Hf",energy, "hf", index, tempContext),
-            temp("Hfg",energy, "hfg", index, tempContext),
-            temp("Hg",energy, "hg", index, tempContext),
-            temp("Sf",entropy, "sf", index, tempContext),
-            temp("Sfg",entropy, "sfg", index, tempContext),
-            temp("Sg",entropy, "sg", index, tempContext),
-          ],
+        body: new Container(
+          padding: new EdgeInsets.all(10.0),
+          child: new Column(
+            children: <Widget>[
+              temp("Psat", pressure, "p", index, tempContext),
+              new Flexible(
+                              child: new Row(
+                  children: <Widget>[
+                    temp("Vf", V, "vf", index, tempContext),
+                    temp("Vg",V, "vg", index, tempContext),
+                  ],
+                ),
+              ),
+              new Flexible(
+                              child: new Row(
+                  children: <Widget>[
+                    temp("Uf",energy, "uf", index, tempContext),
+                    temp("Ufg",energy, "ufg", index, tempContext),
+                    temp("Ug",energy, "ug", index, tempContext),
+                  ],
+                ),
+              ),
+              new Flexible(
+                child: new Row(
+                  children: <Widget>[
+                    temp("Hf",energy, "hf", index, tempContext),
+                    temp("Hfg",energy, "hfg", index, tempContext),
+                    temp("Hg",energy, "hg", index, tempContext),  
+                  ],
+                )
+              ),
+              new Flexible(
+                child: new Row(
+                  children: <Widget>[
+                    temp("Sf",entropy, "sf", index, tempContext),
+                    temp("Sfg",entropy, "sfg", index, tempContext),
+                    temp("Sg",entropy, "sg", index, tempContext)
+                  ],
+                )
+              )
+            ],
+          ),
         )
 
 

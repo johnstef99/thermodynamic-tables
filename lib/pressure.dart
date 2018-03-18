@@ -4,23 +4,36 @@ Flexible pres(String label,String monadaMetrisis, String key, int index, List pr
     new Flexible(
       child: new Card(
           child: new Center(
-            child: new Container(
-              padding: new EdgeInsets.all(10.0),
-              child: new Row(
-                children: <Widget>[
-                  new Text(label + ': ',
-                      style: new TextStyle(color: Colors.blue)
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                new Flexible(
+                  child: new Text(label,
+                  style: new TextStyle(color: Colors.blue,fontSize: 30.0,)
                   ),
-                  new Flexible(
-                    fit: FlexFit.tight,
-                    child: new Text(
+                ),
+                new Flexible(
+                    child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new Text(
                         presContext[index][key].toString(), style: new TextStyle(
                         color: Colors.orange)),
-                  ),
-                  new Text(monadaMetrisis, style: new TextStyle(color: Colors.red),)
-                ],
-              ),
-
+                      new Flexible(
+                        child: new Text(
+                          monadaMetrisis,overflow: TextOverflow.ellipsis, 
+                          style: new TextStyle(
+                            color: Colors.red,
+                            fontSize: 10.0,
+                            fontFamily: 'Roboto',
+                          ),
+                        )
+                      )
+                      ],
+                    ),
+                )
+                
+              ],
             ),
           )
       ),
@@ -45,18 +58,48 @@ class SelectedPres extends StatelessWidget {
                 presContext[index]["p"].toString() + ' kPa')),
         body: new Column(
           children: <Widget>[
+            
+            
+            
+            
+
             pres("Tsat",temperature, "t", index, presContext),
-            pres("Vf",V, "vf", index, presContext),
-            pres("Vg",V, "vg", index, presContext),
-            pres("Uf",energy, "uf", index, presContext),
-            pres("Ufg",energy, "ufg", index, presContext),
-            pres("Ug",energy, "ug", index, presContext),
-            pres("Hf",energy, "hf", index, presContext),
-            pres("Hfg",energy, "hfg", index, presContext),
-            pres("Hg",energy, "hg", index, presContext),
-            pres("Sf",entropy, "sf", index, presContext),
-            pres("Sfg",entropy, "sfg", index, presContext),
-            pres("Sg",entropy, "sg", index, presContext),
+              new Flexible(
+                              child: new Row(
+                  children: <Widget>[
+                    pres("Vf",V, "vf", index, presContext),
+                    pres("Vg",V, "vg", index, presContext),
+                  ],
+                ),
+              ),
+              new Flexible(
+                              child: new Row(
+                  children: <Widget>[
+                    pres("Uf",energy, "uf", index, presContext),
+                    pres("Ufg",energy, "ufg", index, presContext),
+                    pres("Ug",energy, "ug", index, presContext),
+                  ],
+                ),
+              ),
+              new Flexible(
+                child: new Row(
+                  children: <Widget>[
+                    pres("Hf",energy, "hf", index, presContext),
+                    pres("Hfg",energy, "hfg", index, presContext),
+                    pres("Hg",energy, "hg", index, presContext),
+                  ],
+                )
+              ),
+              new Flexible(
+                child: new Row(
+                  children: <Widget>[
+                    pres("Sf",entropy, "sf", index, presContext),
+                    pres("Sfg",entropy, "sfg", index, presContext),
+                    pres("Sg",entropy, "sg", index, presContext),
+                  ],
+                )
+              )
+            
           ],
         )
 
